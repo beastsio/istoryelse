@@ -11,5 +11,6 @@ window.TOWN_CONFIG = {
   v3factory: "0x1f7d7550b1b028f7571e69a784071f0205fd2efa",
   hitUsd: 10000,
   nearUsd: 5000,
+  opensea: "https://opensea.io/collection/agenttownnft",
   xProfile: ""
 };

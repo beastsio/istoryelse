@@ -701,3 +701,8 @@ a.tcard:hover { transform: translateY(-4px); }
   .fee-split .fs b { font-size: 24px; }
 }
 .lp-teaser .cta { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+.os-link { display: inline-block; margin-top: 16px; font-family: var(--head); font-size: 22px; color: var(--sun); text-decoration: none; border-bottom: 3px dashed var(--sun); padding-bottom: 2px; }
+.os-link:hover { color: var(--paper); border-color: var(--paper); }
+.os-btn { margin-top: 16px; width: 100%; }
+.cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
+.hires p { grid-column: 1 / -1; margin: 0; }

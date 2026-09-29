@@ -56,7 +56,7 @@
     if (!list.length) app.appendChild(el("div", { class: "empty", text: agents.length ? "No agents in this view." : "You have no agents yet." }));
     list.forEach((a) => grid.appendChild(card(a)));
     app.appendChild(grid);
-    if (!agents.length) app.lastChild.previousSibling.appendChild(el("div", {}, [el("a", { class: "btn red", href: "mine", text: "Mine your first agent" })]));
+    if (!agents.length) app.lastChild.previousSibling.appendChild(el("div", { class: "cta-row" }, [el("a", { class: "btn red", href: "mine", text: "Mine your first agent" }), AT.CFG.opensea ? el("a", { class: "btn violet", href: AT.CFG.opensea, target: "_blank", rel: "noopener", text: "Buy on OpenSea" }) : null]));
   }
   function visible() { return agents.filter((a) => filter === "all" || (filter === "idle" ? !a.plan : a.plan > 0)); }
 

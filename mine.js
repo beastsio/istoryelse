@@ -247,8 +247,15 @@
   $("go").addEventListener("click", () => running ? stop() : start());
   if (!AT.PREVIEW && AT.isAddr(AT.CFG.buyback)) {
     $("bbBox").hidden = false;
-    const bbBtn = el("button", { class: "btn small teal", type: "button", text: "Run buy & burn", onclick: async () => { try { await W.txFlow("Buy & burn", AT.CFG.buyback, AT.abi.calldata("autoBuy()")); paintBB(); } catch (e) {} } });
+    const bbBtn = el("button", { class: "btn small teal", type: "button", text: "Run buy & burn", hidden: "hidden", onclick: async () => { try { await W.txFlow("Buy & burn", AT.CFG.buyback, AT.abi.calldata("autoBuy()")); paintBB(); } catch (e) {} } });
     $("go").parentElement.appendChild(bbBtn);
+    let bbOwner = null;
+    const bbAdmin = async () => {
+      try { if (!bbOwner) bbOwner = (await AT.call(AT.CFG.buyback, "owner()", [], [], ["address"]))[0]; } catch (e) {}
+      bbBtn.hidden = !(W.account && bbOwner && W.account.toLowerCase() === bbOwner.toLowerCase());
+    };
+    window.addEventListener("at:wallet", bbAdmin);
+    bbAdmin();
     const paintBB = () => AT.town.buybackQueue().then((v) => { $("mBB").textContent = fmt.eth(v, 5) + " ETH"; }).catch(() => {});
     paintBB(); setInterval(paintBB, 20000);
   }

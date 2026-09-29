@@ -438,6 +438,7 @@
 
   function footer() {
     document.querySelectorAll("[data-x]").forEach((a) => { if (CFG.xProfile) a.href = CFG.xProfile; else a.remove(); });
+    document.querySelectorAll("[data-os]").forEach((a) => { if (CFG.opensea) a.href = CFG.opensea; else a.remove(); });
     const ad = document.querySelector(".site-foot .addr");
     if (ad) {
       const rows = [];
