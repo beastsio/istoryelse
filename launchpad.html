@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Launchpad · Agent Town</title>
+<meta name="description" content="Launch your own token on Robinhood Chain in one transaction. Uniswap trading from the first second, liquidity locked forever, creator fees on every trade.">
+<meta name="theme-color" content="#16143a">
+<meta property="og:title" content="Launchpad · Agent Town">
+<meta property="og:description" content="Launch your own token on Robinhood Chain in one transaction. Uniswap trading from the first second, liquidity locked forever, creator fees on every trade.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preload" href="fonts/jersey-10-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/vt323-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap bar">
+    <a class="logo" href="./" aria-label="Agent Town home"><canvas width="32" height="36"></canvas><b>AGENT <span>TOWN</span></b></a>
+    <nav class="nav" aria-label="Main">
+      <a href="town">Town</a>
+      <a href="mine">Mine</a>
+      <a href="agents">My Agents</a>
+      <a href="launchpad">Launchpad</a>
+    </nav>
+    <div class="head-right rel">
+      <button class="btn small wallet-btn" type="button"><i class="dot"></i><span class="t">Connect</span></button>
+      <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+<main class="lp">
+  <div class="wrap page-top lp-top">
+    <div>
+      <span class="tag"><i></i>Launchpad</span>
+      <h1>Launch a token.</h1>
+      <p>One transaction. Trading on Uniswap from the first second. Liquidity locked forever. You earn a fee on every trade.</p>
+    </div>
+    <div class="lp-cta"><a class="btn big red" href="create">Launch a token</a></div>
+  </div>
+  <div class="wrap">
+    <div class="lp-stats">
+      <div class="mstat"><span>Tokens launched</span><b id="sCount">&ndash;</b></div>
+      <div class="mstat"><span>Hits</span><b class="hot" id="sHits">&ndash;</b></div>
+      <div class="mstat"><span>ETH price</span><b id="sEth">&ndash;</b></div>
+      <div class="mstat"><span>Hit line</span><b id="sHit">&ndash;</b></div>
+    </div>
+    <div class="panel light px-drop fees-box" id="feesBox" hidden>
+      <div><h2>Your fees</h2><p>Creator and marketplace fees waiting for you.</p></div>
+      <div class="fee-rows" id="feeRows"></div>
+    </div>
+    <div class="lp-tools">
+      <input type="search" id="q" placeholder="Search name, symbol or address" autocomplete="off" spellcheck="false">
+      <div class="seg" id="pairSeg">
+        <button type="button" class="chip on" data-v="all">All</button>
+        <button type="button" class="chip" data-v="eth">ETH pairs</button>
+        <button type="button" class="chip" data-v="town">$TOWN pairs</button>
+      </div>
+    </div>
+    <div class="lp-block" id="bHits" hidden>
+      <h2 class="lp-h"><span class="hit-ic">&#9733;</span> Hits <small id="hHits"></small></h2>
+      <div class="tgrid" id="gHits"></div>
+    </div>
+    <div class="lp-block" id="bNear" hidden>
+      <h2 class="lp-h">Almost there <small id="hNear"></small></h2>
+      <div class="tgrid" id="gNear"></div>
+    </div>
+    <div class="lp-block" id="bNew" hidden>
+      <h2 class="lp-h">New launches <small>newest first</small></h2>
+      <div class="tgrid" id="gNew"></div>
+      <button class="btn dark more" type="button" id="moreNew" hidden>Show more</button>
+    </div>
+    <div class="empty" id="lpEmpty"><span id="lpMsg">Loading tokens&hellip;</span></div>
+  </div>
+  <div class="paper2 edge-top lp-how">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag"><i></i>How it works</span>
+        <h2>Launch in one minute.</h2>
+      </div>
+      <div class="steps">
+        <div class="step px-drop"><h3>Create</h3><p>Pick a name, a symbol and a small image. Add your links. Everything is stored on-chain.</p></div>
+        <div class="step px-drop"><h3>Pick a pair</h3><p>Pair with ETH or with $TOWN. The pool opens on Uniswap with all 1,000,000,000 tokens and the liquidity is locked forever.</p></div>
+        <div class="step px-drop"><h3>Buy first</h3><p>Optionally buy up to 20% of the supply in the same transaction, before anyone else.</p></div>
+        <div class="step px-drop"><h3>Earn</h3><p>Set a creator fee from 0% to 10%. You earn it on every buy and sell, forever. Claim any time.</p></div>
+      </div>
+      <p class="note dark-note">Every trade pays a 2% fee to the marketplace. On ETH pairs the marketplace also takes the first 3% of the creator fee. On $TOWN pairs the creator keeps the full creator fee.</p>
+    </div>
+  </div>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="row">
+      <a class="logo" href="./"><b>AGENT <span>TOWN</span></b></a>
+      <div class="links">
+        <a href="town">Town</a>
+        <a href="mine">Mine</a>
+        <a href="agents">My Agents</a>
+        <a href="launchpad">Launchpad</a>
+        <a data-x href="#" target="_blank" rel="noopener">X</a>
+      </div>
+    </div>
+    <div class="addr"></div>
+    <div class="addr">Agent Town &middot; 6,385 fully on-chain agents &middot; every job is equal.</div>
+  </div>
+</footer>
+<script src="config.js"></script>
+<script src="keccak.js"></script>
+<script src="data.js"></script>
+<script src="agentart.js"></script>
+<script src="sprites.js"></script>
+<script src="core.js"></script>
+<script src="lpcore.js"></script>
+<script src="lplist.js"></script>
+</body>
+</html>

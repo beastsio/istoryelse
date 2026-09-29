@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Token · Agent Town Launchpad</title>
+<meta name="description" content="Trade a token launched on the Agent Town Launchpad. Uniswap liquidity locked forever.">
+<meta name="theme-color" content="#16143a">
+<meta property="og:title" content="Token · Agent Town Launchpad">
+<meta property="og:description" content="Trade a token launched on the Agent Town Launchpad. Uniswap liquidity locked forever.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preload" href="fonts/jersey-10-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/vt323-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap bar">
+    <a class="logo" href="./" aria-label="Agent Town home"><canvas width="32" height="36"></canvas><b>AGENT <span>TOWN</span></b></a>
+    <nav class="nav" aria-label="Main">
+      <a href="town">Town</a>
+      <a href="mine">Mine</a>
+      <a href="agents">My Agents</a>
+      <a href="launchpad">Launchpad</a>
+    </nav>
+    <div class="head-right rel">
+      <button class="btn small wallet-btn" type="button"><i class="dot"></i><span class="t">Connect</span></button>
+      <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+<main class="lp">
+  <div class="wrap page-top tk-top">
+    <a class="back" href="launchpad">&larr; Launchpad</a>
+    <div class="tk-head" id="tkHead">
+      <div class="tpic big" id="tkPic"></div>
+      <div class="tk-id">
+        <h1 id="tkName">Loading&hellip;</h1>
+        <div class="tk-sym" id="tkSym"></div>
+        <div class="tbadges" id="tkBadges"></div>
+        <p class="tk-desc" id="tkDesc"></p>
+        <div id="tkLinks"></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap tk-grid" id="tkGrid" hidden>
+    <div class="tk-main">
+      <div class="lp-stats">
+        <div class="mstat"><span>Price</span><b id="stPrice">&ndash;</b><small id="stPriceQ"></small></div>
+        <div class="mstat"><span>Market cap</span><b class="hot" id="stCap">&ndash;</b><small id="stCapQ"></small></div>
+        <div class="mstat"><span>Volume</span><b id="stVol">&ndash;</b><small id="stVolQ"></small></div>
+        <div class="mstat"><span>Trades</span><b id="stTrades">&ndash;</b><small id="stAge"></small></div>
+      </div>
+      <div class="panel px-drop hit-panel">
+        <div class="hit-row"><span id="hitLabel">Road to a hit</span><b id="hitPct">&ndash;</b></div>
+        <div class="hitbar big"><i id="hitBar"></i></div>
+      </div>
+      <div class="panel px-drop chart-panel">
+        <div class="chart-head"><h2>Market cap</h2><div class="seg" id="chartUnit"></div></div>
+        <div class="chart-box"><canvas id="chart"></canvas><div class="chart-tip" id="chartTip" hidden></div><div class="chart-empty" id="chartEmpty">Loading trades&hellip;</div></div>
+      </div>
+      <div class="panel px-drop">
+        <h2>Trades</h2>
+        <div class="trades" id="trades"><div class="muted-s">Loading&hellip;</div></div>
+      </div>
+    </div>
+    <aside class="tk-side">
+      <div class="panel light px-drop trade-box">
+        <div class="tabs" id="tabs"><button type="button" class="on" data-v="buy">Buy</button><button type="button" data-v="sell">Sell</button></div>
+        <label class="field"><span><em id="payLbl">You pay</em><small class="bal" id="bal"></small></span>
+          <div class="amt"><input id="amt" inputmode="decimal" placeholder="0.0" autocomplete="off"><em id="amtUnit">ETH</em></div>
+        </label>
+        <div class="quick" id="quick"></div>
+        <div class="recv">
+          <div><span>You get</span><b id="recv">&ndash;</b></div>
+          <div><span>Fee</span><b id="feeLine">&ndash;</b></div>
+          <div><span>Price impact</span><b id="impact">&ndash;</b></div>
+          <div><span>Slippage</span><b class="slip" id="slip"></b></div>
+        </div>
+        <button class="btn big teal trade-btn" type="button" id="tradeBtn">Buy</button>
+        <p class="fine" id="tradeNote"></p>
+      </div>
+      <div class="panel px-drop fees-box side" id="myFees" hidden>
+        <div><h2>Your fees</h2><p id="myFeesT"></p></div>
+        <div class="fee-rows" id="myFeeRows"></div>
+      </div>
+      <div class="panel px-drop tk-info">
+        <h2>Token info</h2>
+        <dl class="sum" id="info"></dl>
+      </div>
+    </aside>
+  </div>
+  <div class="wrap empty" id="tkMissing" hidden>
+    <p>This token was not found on the launchpad.</p>
+    <a class="btn red" href="launchpad">Back to the launchpad</a>
+  </div>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="row">
+      <a class="logo" href="./"><b>AGENT <span>TOWN</span></b></a>
+      <div class="links">
+        <a href="town">Town</a>
+        <a href="mine">Mine</a>
+        <a href="agents">My Agents</a>
+        <a href="launchpad">Launchpad</a>
+        <a data-x href="#" target="_blank" rel="noopener">X</a>
+      </div>
+    </div>
+    <div class="addr"></div>
+    <div class="addr">Agent Town &middot; 6,385 fully on-chain agents &middot; every job is equal.</div>
+  </div>
+</footer>
+<script src="config.js"></script>
+<script src="keccak.js"></script>
+<script src="data.js"></script>
+<script src="agentart.js"></script>
+<script src="sprites.js"></script>
+<script src="core.js"></script>
+<script src="lpcore.js"></script>
+<script src="lptoken.js"></script>
+</body>
+</html>

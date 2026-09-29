@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Launch a token · Agent Town</title>
+<meta name="description" content="Create your own token on Robinhood Chain. Name, symbol, image and links stored on-chain. Uniswap trading from the first second.">
+<meta name="theme-color" content="#16143a">
+<meta property="og:title" content="Launch a token · Agent Town">
+<meta property="og:description" content="Create your own token on Robinhood Chain. Name, symbol, image and links stored on-chain. Uniswap trading from the first second.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preload" href="fonts/jersey-10-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/vt323-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap bar">
+    <a class="logo" href="./" aria-label="Agent Town home"><canvas width="32" height="36"></canvas><b>AGENT <span>TOWN</span></b></a>
+    <nav class="nav" aria-label="Main">
+      <a href="town">Town</a>
+      <a href="mine">Mine</a>
+      <a href="agents">My Agents</a>
+      <a href="launchpad">Launchpad</a>
+    </nav>
+    <div class="head-right rel">
+      <button class="btn small wallet-btn" type="button"><i class="dot"></i><span class="t">Connect</span></button>
+      <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+<main class="lp">
+  <div class="wrap page-top">
+    <a class="back" href="launchpad">&larr; Launchpad</a>
+    <span class="tag"><i></i>New token</span>
+    <h1>Launch a token.</h1>
+    <p>Fill in the details, pick a pair and launch. Your token trades on Uniswap right away.</p>
+  </div>
+  <div class="wrap create-grid">
+    <form class="panel light px-drop cform" id="cform" novalidate autocomplete="off">
+      <div class="frow img-row">
+        <label class="drop" id="drop" for="file">
+          <span class="drop-pic" id="dropPic"><em>+</em></span>
+          <span class="drop-t"><b>Token image</b><small id="imgInfo">PNG, JPG, GIF or WEBP. We shrink it to 20 KB so it fits on-chain.</small></span>
+        </label>
+        <input type="file" id="file" accept="image/png,image/jpeg,image/gif,image/webp" hidden>
+      </div>
+      <div class="fgrid">
+        <label class="field"><span>Name</span><input id="fName" maxlength="32" placeholder="Robo Coin" required><small class="cnt" data-for="fName">0/32</small></label>
+        <label class="field"><span>Symbol</span><input id="fSym" maxlength="12" placeholder="ROBO" required><small class="cnt" data-for="fSym">0/12</small></label>
+      </div>
+      <label class="field"><span>Description</span><textarea id="fDesc" maxlength="280" rows="3" placeholder="Tell people what your token is about."></textarea><small class="cnt" data-for="fDesc">0/280</small></label>
+      <details class="links-box" open>
+        <summary>Links <small>optional</small></summary>
+        <div class="fgrid">
+          <label class="field"><span>X profile</span><input id="lX" inputmode="url" placeholder="https://x.com/yourname"></label>
+          <label class="field"><span>Telegram</span><input id="lTg" inputmode="url" placeholder="https://t.me/yourgroup"></label>
+          <label class="field"><span>Discord</span><input id="lDc" inputmode="url" placeholder="https://discord.gg/invite"></label>
+          <label class="field"><span>Website</span><input id="lWeb" inputmode="url" placeholder="https://yoursite.com"></label>
+          <label class="field wide"><span>X post</span><input id="lPost" inputmode="url" placeholder="https://x.com/yourname/status/123"></label>
+        </div>
+      </details>
+      <div class="field"><span>Pair</span>
+        <div class="pairs" id="pairs">
+          <button type="button" class="pairopt on" data-v="eth"><b>ETH pair</b><small id="ethCapT">Starts at 2 ETH market cap</small></button>
+          <button type="button" class="pairopt" data-v="town"><b>$TOWN pair</b><small id="townCapT">Loading&hellip;</small></button>
+        </div>
+      </div>
+      <div class="field"><span>Creator fee <b class="fee-val" id="feeVal">5%</b></span>
+        <input type="range" id="fFee" min="0" max="10" step="0.1" value="5">
+        <div class="fee-split" id="feeSplit"></div>
+      </div>
+      <div class="field"><span>First buy <small class="muted-s">optional, up to 20% of supply</small></span>
+        <div class="amt"><input id="fBuy" inputmode="decimal" placeholder="0.0"><em id="buyUnit">ETH</em></div>
+        <div class="quick" id="quickBuy"></div>
+        <small class="hint" id="buyInfo">Buy before anyone else, in the same transaction.</small>
+      </div>
+      <button class="btn big red launch-btn" type="submit" id="go">Launch token</button>
+      <p class="fine">Launching costs gas plus your first buy. The name, symbol, image and links can't be changed later.</p>
+    </form>
+    <aside class="stack cside">
+      <div class="panel px-drop">
+        <h2>Preview</h2>
+        <div id="pv"></div>
+      </div>
+      <div class="panel px-drop">
+        <h2>Summary</h2>
+        <dl class="sum" id="sum"></dl>
+      </div>
+    </aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="row">
+      <a class="logo" href="./"><b>AGENT <span>TOWN</span></b></a>
+      <div class="links">
+        <a href="town">Town</a>
+        <a href="mine">Mine</a>
+        <a href="agents">My Agents</a>
+        <a href="launchpad">Launchpad</a>
+        <a data-x href="#" target="_blank" rel="noopener">X</a>
+      </div>
+    </div>
+    <div class="addr"></div>
+    <div class="addr">Agent Town &middot; 6,385 fully on-chain agents &middot; every job is equal.</div>
+  </div>
+</footer>
+<script src="config.js"></script>
+<script src="keccak.js"></script>
+<script src="data.js"></script>
+<script src="agentart.js"></script>
+<script src="sprites.js"></script>
+<script src="core.js"></script>
+<script src="lpcore.js"></script>
+<script src="lpcreate.js"></script>
+</body>
+</html>

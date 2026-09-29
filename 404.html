@@ -6,7 +6,7 @@
   var parts = location.pathname.split("/").filter(Boolean);
   var root = /github\.io$/.test(location.hostname) && parts.length ? "/" + parts[0] + "/" : "/";
   var rest = location.pathname.slice(root.length).replace(/\/+$/, "").replace(/\/index$/i, "").replace(/\.html$/i, "").toLowerCase();
-  if (/^(town|mine|agents)$/.test(rest) && location.pathname !== root + rest) { location.replace(root + rest + location.search + location.hash); return; }
+  if (/^(town|mine|agents|launchpad|create|token)$/.test(rest) && location.pathname !== root + rest) { location.replace(root + rest + location.search + location.hash); return; }
   document.write('<base href="' + root + '">');
 })();
 </script>
@@ -34,6 +34,7 @@
       <a href="town">Town</a>
       <a href="mine">Mine</a>
       <a href="agents">My Agents</a>
+      <a href="launchpad">Launchpad</a>
     </nav>
     <div class="head-right rel">
       <button class="btn small wallet-btn" type="button"><i class="dot"></i><span class="t">Connect</span></button>
@@ -60,6 +61,7 @@
         <a href="town">Town</a>
         <a href="mine">Mine</a>
         <a href="agents">My Agents</a>
+        <a href="launchpad">Launchpad</a>
         <a data-x href="#" target="_blank" rel="noopener">X</a>
       </div>
     </div>
