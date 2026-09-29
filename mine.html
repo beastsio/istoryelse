@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mine an Agent · Agent Town</title>
+<meta name="description" content="Hire a new robot agent by mining in your browser. Proof of work, no whitelist.">
+<meta name="theme-color" content="#16143a">
+<meta property="og:title" content="Mine an Agent · Agent Town">
+<meta property="og:description" content="Hire a new robot agent by mining in your browser. Proof of work, no whitelist.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preload" href="/fonts/jersey-10-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/vt323-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap bar">
+    <a class="logo" href="/" aria-label="Agent Town home"><canvas width="32" height="36"></canvas><b>AGENT <span>TOWN</span></b></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/town">Town</a>
+      <a href="/mine">Mine</a>
+      <a href="/agents">My Agents</a>
+    </nav>
+    <div class="head-right rel">
+      <button class="btn small wallet-btn" type="button"><i class="dot"></i><span class="t">Connect</span></button>
+      <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="wrap page-top">
+    <span class="tag"><i></i>Hiring office</span>
+    <h1>Mine an agent.</h1>
+    <p>Your browser searches for a lucky hash. Find one and a new agent joins the town. No whitelist, no bots.</p>
+  </div>
+  <div class="wrap mine-grid">
+    <div class="panel px-drop">
+      <div class="reel" id="reel">
+        <canvas></canvas><canvas class="center"></canvas><canvas></canvas>
+        <span class="tag status" id="status"><i></i>Ready</span>
+      </div>
+      <div class="mstats">
+        <div class="mstat"><span>Hire price</span><b class="hot" id="mPrice">&ndash;</b></div>
+        <div class="mstat"><span>Epoch</span><b id="mEpoch">&ndash;</b></div>
+        <div class="mstat"><span>Difficulty</span><b id="mDiff">&ndash;</b></div>
+        <div class="mstat"><span>Your speed</span><b class="hot" id="mRate">0 H/s</b></div>
+        <div class="mstat"><span>Hashes tried</span><b id="mTried">0</b></div>
+        <div class="mstat"><span>Last hire</span><b id="mLast">&ndash;</b></div>
+        <div class="mstat" id="bbBox" hidden><span>Buyback queue</span><b id="mBB">&ndash;</b></div>
+      </div>
+      <div class="progress"><i id="mBar"></i></div>
+      <div class="prog-label"><span id="mHired">0 / 6,385 hired</span><span id="mLeft"></span></div>
+      <div class="controls">
+        <button class="btn big red" type="button" id="go">Start mining</button>
+        <div class="threads" id="threads">Threads</div>
+      </div>
+      <div class="console" id="log" aria-live="polite"></div>
+    </div>
+    <div class="stack">
+      <div class="panel light px-drop">
+        <h2>Latest hires</h2>
+        <div class="hires" id="hires"></div>
+      </div>
+      <div class="panel light px-drop">
+        <h2>How it works</h2>
+        <ul class="bullets">
+          <li>Connect a wallet with ETH on Robinhood Chain.</li>
+          <li>Press Start. Your browser hashes your address, a fresh block and the last hire.</li>
+          <li>When a hash is low enough, you confirm one transaction and pay the hire price.</li>
+          <li>If someone hires first, your miner restarts on the new puzzle automatically.</li>
+          <li>Keep this tab open while mining. More threads means more speed.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="row">
+      <a class="logo" href="/"><b>AGENT <span>TOWN</span></b></a>
+      <div class="links">
+        <a href="/town">Town</a>
+        <a href="/mine">Mine</a>
+        <a href="/agents">My Agents</a>
+        <a data-x href="#" target="_blank" rel="noopener">X</a>
+      </div>
+    </div>
+    <div class="addr"></div>
+    <div class="addr">Agent Town &middot; 6,385 fully on-chain agents &middot; every job is equal.</div>
+  </div>
+</footer>
+<script src="/config.js"></script>
+<script src="/keccak.js"></script>
+<script src="/data.js"></script>
+<script src="/agentart.js"></script>
+<script src="/sprites.js"></script>
+<script src="/core.js"></script>
+<script src="/mine.js"></script>
+</body>
+</html>

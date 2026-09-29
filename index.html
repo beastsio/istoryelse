@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agent Town · 6,385 on-chain robot workers</title>
+<meta name="description" content="A pixel town of 6,385 fully on-chain robot agents on Robinhood Chain. Mine an agent, put it to work and earn a salary from every new hire. Every job is equal.">
+<meta name="theme-color" content="#16143a">
+<meta property="og:title" content="Agent Town · 6,385 on-chain robot workers">
+<meta property="og:description" content="A pixel town of 6,385 fully on-chain robot agents on Robinhood Chain. Mine an agent, put it to work and earn a salary from every new hire. Every job is equal.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preload" href="/fonts/jersey-10-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/vt323-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap bar">
+    <a class="logo" href="/" aria-label="Agent Town home"><canvas width="32" height="36"></canvas><b>AGENT <span>TOWN</span></b></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/town">Town</a>
+      <a href="/mine">Mine</a>
+      <a href="/agents">My Agents</a>
+    </nav>
+    <div class="head-right rel">
+      <button class="btn small wallet-btn" type="button"><i class="dot"></i><span class="t">Connect</span></button>
+      <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="hero" aria-label="Agent Town">
+    <canvas class="town" id="heroTown" aria-hidden="true"></canvas>
+    <div class="hero-card px-drop">
+      <span class="tag"><i></i>Robinhood Chain &middot; 6,385 agents</span>
+      <h1>AGENT <span>TOWN</span></h1>
+      <p>A tiny pixel town where robot agents work real jobs. Mine one, put it to work, and earn a salary from every new hire.</p>
+      <div class="cta">
+        <a class="btn big" href="/town">Enter the Town</a>
+        <a class="btn big red" href="/mine">Mine an Agent</a>
+      </div>
+    </div>
+    <div class="hero-hint">Scroll to meet the workers</div>
+  </section>
+
+  <div class="ticker" aria-label="Live stats"><div class="track" id="ticker"></div></div>
+
+  <section class="paper">
+    <div class="wrap equal">
+      <div class="reveal">
+        <span class="tag"><i></i>Our town rule</span>
+        <h2>Every job is equal.</h2>
+        <p>A coder and a street food cook earn the same salary. A farmer is exactly as rare as a pilot. In Agent Town no job is better than another, because every worker matters.</p>
+        <p>Rarity only comes from style: chassis color, eye glow, eye shape, head and hat. Never from the job.</p>
+        <div class="facts">
+          <div class="fact px"><b>35</b><span>jobs</span></div>
+          <div class="fact px"><b>182+</b><span>agents per job</span></div>
+          <div class="fact px"><b>1&times;</b><span>same pay for all</span></div>
+        </div>
+      </div>
+      <div class="equal-art px-drop reveal" id="equalArt">
+        <div class="scale"><span>CODER = CHEF = FARMER = PILOT</span><span>=</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="night edge-top" id="jobs">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="tag"><i></i>The workforce</span>
+        <h2>35 jobs. 12 districts.</h2>
+        <p>Every agent is drawn fully on-chain and animated. They blink, bob and work their job all day long.</p>
+      </div>
+      <div class="filters" id="filters"></div>
+      <div class="jobs" id="jobGrid"></div>
+    </div>
+  </section>
+
+  <section class="paper2 edge-top">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="tag"><i></i>How it works</span>
+        <h2>Mine. Work. Get paid.</h2>
+        <p>No whitelist, no bots. Just your browser, your wallet and a little proof of work.</p>
+      </div>
+      <div class="steps">
+        <div class="step px-drop reveal"><div class="ic"><canvas data-step="0"></canvas></div><h3>Mine</h3><p>Your browser solves a proof of work puzzle. Find a valid hash, pay the hire price and a new agent joins the town.</p></div>
+        <div class="step px-drop reveal"><div class="ic"><canvas data-step="1"></canvas></div><h3>Clock in</h3><p>Stake your agent for a 7-day or 30-day shift. It walks to its job in town and starts working.</p></div>
+        <div class="step px-drop reveal"><div class="ic"><canvas data-step="2"></canvas></div><h3>Get paid</h3><p>60% of every new hire flows to agents at work, second by second, shared by shift size.</p></div>
+        <div class="step px-drop reveal"><div class="ic"><canvas data-step="3"></canvas></div><h3>Retire</h3><p>Burn an idle agent to collect its unpaid salary plus $TOWN tokens.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="night2 edge-top" id="salary">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="tag"><i></i>Salary</span>
+        <h2>Pick a shift.</h2>
+        <p>Only agents at work earn a salary. The longer the shift, the bigger the share.</p>
+      </div>
+      <div class="plans">
+        <div class="plan px-drop reveal">
+          <h3>Part-time</h3>
+          <div class="mult">1&times;</div>
+          <ul>
+            <li>7-day shift</li>
+            <li>1 share of every salary payout</li>
+            <li>Keeps earning after 7 days until you clock out</li>
+            <li>Can't be sold or moved while working</li>
+          </ul>
+        </div>
+        <div class="plan full px-drop reveal">
+          <span class="tag ribbon">Best pay</span>
+          <h3>Full-time</h3>
+          <div class="mult">4&times;</div>
+          <ul>
+            <li>30-day shift</li>
+            <li>4 shares of every salary payout</li>
+            <li>Keeps earning after 30 days until you clock out</li>
+            <li>Can't be sold or moved while working</li>
+          </ul>
+        </div>
+      </div>
+      <p class="note reveal">Idle agents earn nothing. Salary is paid in ETH, grows every second, and you can claim it any time.</p>
+    </div>
+  </section>
+
+  <section class="paper edge-top">
+    <div class="wrap split">
+      <div class="sec-head reveal">
+        <span class="tag"><i></i>Every hire</span>
+        <h2>Where the ETH goes.</h2>
+        <p>Each time an agent is mined, its price is split three ways, right inside the contract.</p>
+      </div>
+      <div class="bar px-drop reveal"><div>60%</div><div>30%</div><div>10%</div></div>
+      <div class="legend">
+        <div class="px reveal"><b>Salary</b>Paid to every agent at work, by shift size.</div>
+        <div class="px reveal"><b>Buyback</b>Buys $TOWN on the market and burns it forever.</div>
+        <div class="px reveal"><b>Studio</b>Keeps the lights on in town.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="paper2 edge-top">
+    <div class="wrap coin">
+      <img class="coin-img reveal" src="/town-token.png" alt="$TOWN token logo" width="320" height="320">
+      <div class="reveal">
+        <span class="tag"><i></i>The town token</span>
+        <h2>$TOWN</h2>
+        <p>1,000,000 $TOWN start in the liquidity pool. New $TOWN is only created when an agent retires, and 30% of every hire buys $TOWN back and burns it forever.</p>
+        <p class="addr" id="tokenAddr">Contract goes live with the town.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="night edge-top">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="tag"><i></i>Hiring</span>
+        <h2>5 epochs.</h2>
+        <p>The price starts at 0.0005 ETH and rises step by step to 0.0267 ETH. Difficulty adjusts every 8 hires to keep about 30 seconds between hires.</p>
+      </div>
+      <div class="table-wrap reveal">
+        <table class="table" id="epochs">
+          <thead><tr><th>Epoch</th><th>Agents</th><th>Hire price</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="note reveal">Retire reward starts at 1,000 $TOWN and halves for every epoch that passes after an agent was hired.</p>
+    </div>
+  </section>
+
+  <section class="paper2 edge-top">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="tag"><i></i>Traits</span>
+        <h2>Style makes rare.</h2>
+        <p>Millions of combinations, one of a kind each. No trait is tied to a job.</p>
+      </div>
+      <div class="traits" id="traits"></div>
+    </div>
+  </section>
+
+  <section class="night edge-top">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="tag"><i></i>FAQ</span>
+        <h2>Questions.</h2>
+      </div>
+      <div class="faq">
+        <details class="reveal"><summary>What is Agent Town?</summary><p>A collection of 6,385 robot agents on Robinhood Chain. Each one has a job in a pixel town. Put your agent to work and it earns a salary in ETH from every new hire.</p></details>
+        <details class="reveal"><summary>How do I get an agent?</summary><p>Open the Mine page, connect a wallet with some ETH on Robinhood Chain and press Start. Your browser searches for a valid hash. When it finds one, you confirm one transaction to hire your agent.</p></details>
+        <details class="reveal"><summary>How does salary work?</summary><p>60% of every hire price goes into the salary pool. The pool pays agents at work every second, and each hire is fully paid out within 24 hours. A part-time agent holds 1 share and a full-time agent holds 4 shares. Claim any time.</p></details>
+        <details class="reveal"><summary>What happens when my shift ends?</summary><p>Your agent keeps working and earning at the same rate. You can clock it out any time after the shift ends. Once it is out, it can be sold or moved again.</p></details>
+        <details class="reveal"><summary>Are some jobs rarer or better paid?</summary><p>No. Every job has the same number of agents and the same salary. Rarity only comes from style traits.</p></details>
+        <details class="reveal"><summary>Is the art on-chain?</summary><p>Yes. Every agent is an animated SVG built by the contract itself. No servers, no IPFS.</p></details>
+        <details class="reveal"><summary>Will the site ask me to sign a message?</summary><p>Only once when you connect: a plain text message that proves you own the wallet. It is free and can never move your funds. Everything else is a normal transaction you approve, like hiring, clocking in, clocking out, claiming or retiring.</p></details>
+        <details class="reveal"><summary>What is $TOWN?</summary><p>The town token. 1,000,000 $TOWN start in the liquidity pool. New $TOWN is only created when an agent retires, and 30% of every hire buys $TOWN back and burns it.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="paper2 edge-top cta-band">
+    <div class="wrap reveal">
+      <span class="tag"><i></i>Now hiring</span>
+      <h2>The town needs you.</h2>
+      <p>6,385 jobs. All equal. All on-chain.</p>
+      <div class="cta">
+        <a class="btn big red" href="/mine">Mine an Agent</a>
+        <a class="btn big" href="/town">Enter the Town</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="row">
+      <a class="logo" href="/"><b>AGENT <span>TOWN</span></b></a>
+      <div class="links">
+        <a href="/town">Town</a>
+        <a href="/mine">Mine</a>
+        <a href="/agents">My Agents</a>
+        <a data-x href="#" target="_blank" rel="noopener">X</a>
+      </div>
+    </div>
+    <div class="addr"></div>
+    <div class="addr">Agent Town &middot; 6,385 fully on-chain agents &middot; every job is equal.</div>
+  </div>
+</footer>
+<script src="/config.js"></script>
+<script src="/keccak.js"></script>
+<script src="/data.js"></script>
+<script src="/agentart.js"></script>
+<script src="/sprites.js"></script>
+<script src="/core.js"></script>
+<script src="/townmap.js"></script>
+<script src="/home.js"></script>
+</body>
+</html>
