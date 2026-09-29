@@ -397,8 +397,8 @@
     if (!head) return;
     const logo = head.querySelector(".logo canvas");
     if (logo) AT.portrait(logo, { id: 1, job: 0, chassis: 9, glow: 0, uniform: 0, eyes: 1, head: 0, hat: 0, seat: 0, key: "logo", phase: 0 }, 3);
-    const path = location.pathname.replace(/\.html$/, "").replace(/\/$/, "") || "/";
-    head.querySelectorAll(".nav a").forEach((a) => { const h = a.getAttribute("href"); if (h === path || (h !== "/" && path.startsWith(h))) a.classList.add("on"); });
+    const seg = location.pathname.replace(/\.html$/, "").replace(/\/$/, "").split("/").pop();
+    head.querySelectorAll(".nav a").forEach((a) => { if (a.getAttribute("href") === seg) a.classList.add("on"); });
     const mb = head.querySelector(".menu-btn");
     if (mb) mb.addEventListener("click", () => { document.body.classList.toggle("menu-open"); mb.setAttribute("aria-expanded", document.body.classList.contains("menu-open")); });
     head.querySelectorAll(".nav a").forEach((a) => a.addEventListener("click", () => document.body.classList.remove("menu-open")));
@@ -417,7 +417,7 @@
       if (pop) { pop.remove(); pop = null; return; }
       pop = el("div", { class: "menu-pop px-drop" }, [
         el("button", { text: "Copy address", onclick: () => { navigator.clipboard && navigator.clipboard.writeText(W.account); toast("Copied", fmt.short(W.account)); } }),
-        el("a", { href: "/agents", text: "My agents" }),
+        el("a", { href: "agents", text: "My agents" }),
         CFG.explorer ? el("a", { href: CFG.explorer.replace(/\/$/, "") + "/address/" + W.account, target: "_blank", rel: "noopener", text: "View on explorer" }) : null,
         el("button", { text: "Disconnect", onclick: () => { disconnect(); pop.remove(); pop = null; } })
       ]);

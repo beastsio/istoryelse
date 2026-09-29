@@ -145,7 +145,7 @@
   let atlasReady = false;
   const atlasWait = [];
   atlasImg.onload = () => { atlasReady = true; atlasWait.splice(0).forEach((f) => f()); };
-  function loadAtlas(src) { if (!atlasImg.src) atlasImg.src = src || "/atlas.png"; return new Promise((res) => atlasReady ? res() : atlasWait.push(res)); }
+  function loadAtlas(src) { if (!atlasImg.src) atlasImg.src = src || "atlas.png"; return new Promise((res) => atlasReady ? res() : atlasWait.push(res)); }
 
   const players = new Set();
   let tick = 0, loopOn = false;

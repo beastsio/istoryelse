@@ -56,7 +56,7 @@
     if (!list.length) app.appendChild(el("div", { class: "empty", text: agents.length ? "No agents in this view." : "You have no agents yet." }));
     list.forEach((a) => grid.appendChild(card(a)));
     app.appendChild(grid);
-    if (!agents.length) app.lastChild.previousSibling.appendChild(el("div", {}, [el("a", { class: "btn red", href: "/mine", text: "Mine your first agent" })]));
+    if (!agents.length) app.lastChild.previousSibling.appendChild(el("div", {}, [el("a", { class: "btn red", href: "mine", text: "Mine your first agent" })]));
   }
   function visible() { return agents.filter((a) => filter === "all" || (filter === "idle" ? !a.plan : a.plan > 0)); }
 
@@ -124,7 +124,7 @@
         const plan = kind === "stake1" ? 1 : 2;
         await W.txFlow("Clock in", to, AT.abi.calldata("stake(uint256[],uint8)", ["uint256[]", "uint8"], [ids, plan]));
         const first = ids[0];
-        AT.toast("Off to work!", el("a", { href: "/town?agent=" + first + "&walk=1", text: "Watch #" + first + " walk to work" }), "", 12000);
+        AT.toast("Off to work!", el("a", { href: "town?agent=" + first + "&walk=1", text: "Watch #" + first + " walk to work" }), "", 12000);
       } else if (kind === "unstake") {
         await W.txFlow("Clock out", to, AT.abi.calldata("unstake(uint256[])", ["uint256[]"], [ids]));
       } else if (kind === "claim") {
@@ -168,7 +168,7 @@
 
   function boot() {
     if (AT.PREVIEW) {
-      hero(["Hiring opens soon", "Once agents can be mined, the ones in your wallet will show up here. You can clock them in, claim salary and retire them."], el("a", { class: "btn red", href: "/mine", text: "Test your miner" }));
+      hero(["Hiring opens soon", "Once agents can be mined, the ones in your wallet will show up here. You can clock them in, claim salary and retire them."], el("a", { class: "btn red", href: "mine", text: "Test your miner" }));
       const demo = AT.demoTown(6, 3).map((a, i) => Object.assign(a, { salary: BigInt(i * 137) * 10n ** 12n }));
       const grid = el("div", { class: "agrid" });
       app.appendChild(el("div", { class: "sec-head" }, [el("span", { class: "tag", html: "<i></i>Example" }), el("h2", { text: "How it will look" })]));

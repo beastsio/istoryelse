@@ -3,9 +3,11 @@
 <head>
 <script>
 (function () {
-  var p = location.pathname.replace(/\/+$/, "").replace(/\/index$/i, "").replace(/\.html$/i, "");
-  var m = p.match(/^\/(town|mine|agents)$/i);
-  if (m && location.pathname !== "/" + m[1].toLowerCase()) location.replace("/" + m[1].toLowerCase() + location.search + location.hash);
+  var parts = location.pathname.split("/").filter(Boolean);
+  var root = /github\.io$/.test(location.hostname) && parts.length ? "/" + parts[0] + "/" : "/";
+  var rest = location.pathname.slice(root.length).replace(/\/+$/, "").replace(/\/index$/i, "").replace(/\.html$/i, "").toLowerCase();
+  if (/^(town|mine|agents)$/.test(rest) && location.pathname !== root + rest) { location.replace(root + rest + location.search + location.hash); return; }
+  document.write('<base href="' + root + '">');
 })();
 </script>
 <meta charset="utf-8">
@@ -16,22 +18,22 @@
 <meta property="og:title" content="Lost in town · Agent Town">
 <meta property="og:description" content="This street does not exist in Agent Town.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="/og.png">
+<meta property="og:image" content="og.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="/favicon.png">
-<link rel="preload" href="/fonts/jersey-10-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/vt323-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/fonts.css">
-<link rel="stylesheet" href="/style.css">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preload" href="fonts/jersey-10-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/vt323-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="site-head">
   <div class="wrap bar">
-    <a class="logo" href="/" aria-label="Agent Town home"><canvas width="32" height="36"></canvas><b>AGENT <span>TOWN</span></b></a>
+    <a class="logo" href="./" aria-label="Agent Town home"><canvas width="32" height="36"></canvas><b>AGENT <span>TOWN</span></b></a>
     <nav class="nav" aria-label="Main">
-      <a href="/town">Town</a>
-      <a href="/mine">Mine</a>
-      <a href="/agents">My Agents</a>
+      <a href="town">Town</a>
+      <a href="mine">Mine</a>
+      <a href="agents">My Agents</a>
     </nav>
     <div class="head-right rel">
       <button class="btn small wallet-btn" type="button"><i class="dot"></i><span class="t">Connect</span></button>
@@ -46,18 +48,18 @@
       <span class="tag"><i></i>Error 404</span>
       <h2>This street does not exist.</h2>
       <p>Even our delivery agents could not find it.</p>
-      <a class="btn red" href="/">Back to town</a>
+      <a class="btn red" href="./">Back to town</a>
     </div>
   </section>
 </main>
 <footer class="site-foot">
   <div class="wrap">
     <div class="row">
-      <a class="logo" href="/"><b>AGENT <span>TOWN</span></b></a>
+      <a class="logo" href="./"><b>AGENT <span>TOWN</span></b></a>
       <div class="links">
-        <a href="/town">Town</a>
-        <a href="/mine">Mine</a>
-        <a href="/agents">My Agents</a>
+        <a href="town">Town</a>
+        <a href="mine">Mine</a>
+        <a href="agents">My Agents</a>
         <a data-x href="#" target="_blank" rel="noopener">X</a>
       </div>
     </div>
@@ -65,12 +67,12 @@
     <div class="addr">Agent Town &middot; 6,385 fully on-chain agents &middot; every job is equal.</div>
   </div>
 </footer>
-<script src="/config.js"></script>
-<script src="/keccak.js"></script>
-<script src="/data.js"></script>
-<script src="/agentart.js"></script>
-<script src="/sprites.js"></script>
-<script src="/core.js"></script>
+<script src="config.js"></script>
+<script src="keccak.js"></script>
+<script src="data.js"></script>
+<script src="agentart.js"></script>
+<script src="sprites.js"></script>
+<script src="core.js"></script>
 <script>
 (function () {
   var c = document.getElementById("lost"), g = c.getContext("2d"), a = AT.makeAgent(29, AT.rng(29)), f = 0;

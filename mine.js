@@ -60,7 +60,7 @@
     workers.forEach((w) => w.terminate());
     workers = []; rates = {};
     for (let i = 0; i < threads; i++) {
-      const w = new Worker("/worker.js");
+      const w = new Worker("worker.js");
       w.onmessage = (e) => onWorker(i, e.data);
       workers.push(w);
     }
@@ -199,7 +199,7 @@
       c,
       el("p", { text: test ? "Your browser can mine. When hiring opens, this hash would hire a new agent." : "Your agent is ready. Put it to work to start earning salary." }),
       el("div", { class: "cta" }, [
-        test ? el("button", { class: "btn small", type: "button", text: "Nice!", onclick: () => box.remove() }) : el("a", { class: "btn small red", href: "/agents", text: "Put it to work" }),
+        test ? el("button", { class: "btn small", type: "button", text: "Nice!", onclick: () => box.remove() }) : el("a", { class: "btn small red", href: "agents", text: "Put it to work" }),
         el("button", { class: "btn small paper", type: "button", text: test ? "Close" : "Keep mining", onclick: () => { box.remove(); if (!test) start(); } })
       ])
     ]);

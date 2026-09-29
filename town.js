@@ -79,7 +79,7 @@
     }
     if (!list.length) box.appendChild(el("p", { text: "Nobody is working here yet. Be the first!" }));
     else page();
-    body.appendChild(el("a", { class: "btn small red more", href: "/agents", text: "Put your agent to work" }));
+    body.appendChild(el("a", { class: "btn small red more", href: "agents", text: "Put your agent to work" }));
     $("drawer").classList.add("open");
   }
   $("dClose").addEventListener("click", () => { $("drawer").classList.remove("open"); town.select(null); Object.values(labels).forEach((l) => l.classList.remove("on")); });
